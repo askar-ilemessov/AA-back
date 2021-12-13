@@ -11,9 +11,14 @@ class Category(models.Model):
 
 
 class Items(models.Model):
+    class ItemCategory(models.TextChoices):
+            TOYS = 'Toys'
+            
+
     name=CharField(max_length=100,blank=True)
     price=IntegerField(blank=True)
     description=TextField(blank=True)
     quantity=IntegerField(blank=True)
-    cat=models.ForeignKey(Category,related_name='category', on_delete=models.CASCADE,null=True)
+    #cat=models.ForeignKey(Category,related_name='category', on_delete=models.CASCADE,null=True)
+    cat=models.TextField(choices=ItemCategory.choices, max_length=100)
 
