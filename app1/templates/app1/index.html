@@ -1,16 +1,31 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     {% for item in items %}
-
-     <p>{{item.name}}</p>
-     
-    {% endfor %}
+    <div class="card w-50">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <span> 
+            <br><b>Price:</b> {{item.price}} 
+            <br><b>Description:</b> {{item.description}} 
+            <br><b>Quantity:</b> {{item.quantity}} 
+            <br>
+          </span>
+          <a href="#" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+      
 </body>
+
 </html>
