@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app1.apps.App1Config'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,11 @@ WSGI_APPLICATION = 'aatech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'igpstest',
+        'CLIENT': {
+           'host': 'mongodb+srv://maagauiya:magauiyainc@cluster0.f7uie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        }
     }
 }
 
