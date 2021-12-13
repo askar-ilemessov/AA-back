@@ -6,6 +6,7 @@ from .views import*
 
 urlpatterns=[
     path('',index,name='main page'),
-    path('submit', submit, name="submit")
+    path('list',index,name='list'),
+    path('addItem', addItem, name="addItem")
     
 ]

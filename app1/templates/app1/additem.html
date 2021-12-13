@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/app1/css/additems.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,34 +13,38 @@
 
 <body>
     <div class="container">
-        <form method="POST" action="{% url 'submit' %}">{% csrf_token %}
-
-            <div class="form-example">
+        <form method="POST" action="{% url 'addItem' %}">{% csrf_token %}
+            <div class="form-group">
                 <label for="name">Item Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required="required">
             </div>
-            <div class="form-example">
-                <label for="price">Item price</label>
-                <input type="number" class="form-control" id="price" name="price">
-            </div>
-            <div class="form-example">
+
+            <div class="form-group">
                 <label for="description">Item description</label>
-                <input type="text" class="form-control" id="description" name="description">
+                <input type="text" class="form-control" id="description" name="description" required="required">
             </div>
-            <div class="form-example">
+            <div class="form-group">
+                <label for="price">Item price</label>
+                <input type="number" class="form-control" id="price" name="price" required="required" min="0">
+            </div>
+
+            <div class="form-group">
                 <label for="quantity">Item quantity</label>
-                <input type="number" class="form-control" id="quantity" name="quantity">
+                <input type="number" class="form-control" id="quantity" name="quantity" required="required" min="0">
             </div>
-            <div class="form-example">
+            <div class="form-group">
                 <label for="cat">Category</label>
                 <select class="form-control" id="cat" name="cat">
                 <option value="toys"> toys </option>
             </select>
             </div>
-            <div class="form-example">
-                <button type="submit" class="btn btn-primary">submit</button>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Add Item</button>
             </div>
         </form>
+        <div class="form-group">
+            <a class="btn btn-primary" href="{% url 'list' %}" role="button">Link</a>
+        </div>
     </div>
 </body>
 

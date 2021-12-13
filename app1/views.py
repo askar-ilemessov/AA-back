@@ -11,21 +11,15 @@ def index(request):
     return render(request,'app1/index.html', context=context,)
 
 
-def submit(request):
+def addItem(request):
     obj = Items()
-    obj.name = request.POST.get('name')
-    obj.price = request.POST.get('price')
-    obj.description = request.POST.get('description')
-    obj.quantity = request.POST.get('quantity')
-    obj.cat = request.POST.get('cat')
-    obj.save()
-    #print(obj.name)
-    mydict = {
-        "name": obj.name,
-        "price": obj.price,
-        "description": obj.description,
-        "quantity": obj.quantity,  
-        "cat": obj.cat
-    }
+    if request.method == 'POST':
+        #print('Printing POST request: ', request.POST)
+        obj.name = request.POST.get('name')
+        obj.description = request.POST.get('description')
+        obj.price = request.POST.get('price')
+        obj.quantity = request.POST.get('quantity')
+        obj.cat = request.POST.get('cat')
+        obj.save()
 
-    return render(request, 'app1/additem.html', context=mydict)
+    return render(request, 'app1/additem.html')
