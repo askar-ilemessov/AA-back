@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'aatech.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'atech',
+        'NAME': 'aa-tech',
         'CLIENT': {
-           'host': 'mongodb+srv://maagauiya:magauiyainc@cluster0.f7uie.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+           'host': 'mongodb+srv://admin:aadmin@cluster0.cbu66.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
         }
     }
 }

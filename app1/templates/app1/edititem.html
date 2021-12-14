@@ -8,38 +8,40 @@
     <link rel="stylesheet" href="/static/app1/css/additems.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добавить товар</title>
+    <title>Изменить товар</title>
 </head>
 
 <body>
     <div class="container">
-        <form method="POST" action="{% url 'addItem' %}">{% csrf_token %}
+        <form method="POST" action="">{% csrf_token %}
             <div class="form-group">
                 <label for="name">Наименование</label>
-                <input type="text" class="form-control" id="name" name="name" required="required">
+                <input type="text" class="form-control" id="name" name="name" required="required" value="{{ name }}">
             </div>
 
             <div class="form-group">
                 <label for="description">Описание</label>
-                <input type="text" class="form-control" id="description" name="description" required="required">
+                <input type="text" class="form-control" id="description" name="description" required="required" value="{{ description }}">
             </div>
             <div class="form-group">
                 <label for="price">Цена</label>
-                <input type="number" class="form-control" id="price" name="price" required="required" min="0">
+                <input type="number" class="form-control" id="price" name="price" required="required" min="0" value="{{ price }}">
             </div>
 
             <div class="form-group">
                 <label for="quantity">Количество</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" required="required" min="0">
+                <input type="number" class="form-control" id="quantity" name="quantity" required="required" min="0" value="{{ quantity }}">
             </div>
             <div class="form-group">
                 <label for="category">Категория</label>
                 <select class="form-control" id="category" name="category">
+                <option value="{{ category }}" selected> {{category}} </option>
                 <option value="Кирпичи"> Кирпичи </option>
             </select>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Добавить товар</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+
             </div>
         </form>
         <div class="form-group">
