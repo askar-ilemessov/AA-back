@@ -1,0 +1,39 @@
+{% extends "app1/base.html" %} {% block title %} Изменить товар {% endblock %} {% block content %}
+<div class="container">
+    <form method="POST" action="">{% csrf_token %}
+        <div class="form-group">
+            <label for="name">Наименование</label>
+            <input type="text" class="form-control" id="name" name="name" required="required" value="{{ name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Описание</label>
+            <input type="text" class="form-control" id="description" name="description" required="required" value="{{ description }}">
+        </div>
+        <div class="form-group">
+            <label for="price">Цена</label>
+            <input type="number" class="form-control" id="price" name="price" required="required" min="0" value="{{ price }}">
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Количество</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" required="required" min="0" value="{{ quantity }}">
+        </div>
+        <div class="form-group">
+            <label for="category">Категория</label>
+            <select class="form-control" id="category" name="category">
+            <option value="{{ category }}" selected> {{category}} </option>
+            <option value="Кирпичи"> Кирпичи </option>
+        </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+
+        </div>
+    </form>
+    <div class="form-group">
+        <a class="btn btn-primary" href="{% url 'list' %}" role="button">Все товары</a>
+    </div>
+</div>
+
+{% endblock %}

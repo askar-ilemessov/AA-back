@@ -8,7 +8,7 @@ def index(request):
     context={
         "items" : items,
     }
-    return render(request,'app1/index.html', context=context,)
+    return render(request,'app1/list.html', context=context,)
 
 
 def showAllProducts(request):
@@ -16,7 +16,7 @@ def showAllProducts(request):
     context={
         "items" : items,
     }
-    return render(request,'app1/index.html', context=context)
+    return render(request,'app1/list.html', context=context)
 
 
 
@@ -31,7 +31,7 @@ def addItem(request):
         obj.category = request.POST.get('category')
         obj.save()
 
-    return render(request, 'app1/additem.html')
+    return render(request, 'app1/additem2.html')
 
 
 def editItem(request, pk):
@@ -54,7 +54,7 @@ def editItem(request, pk):
         obj.category = request.POST.get('category')
         obj.save()
         return redirect('/')
-    return render(request, 'app1/edititem.html', context=mydict)
+    return render(request, 'app1/editItem2.html', context=mydict)
 
 
 def deleteItem(request, pk):
@@ -63,7 +63,7 @@ def deleteItem(request, pk):
     mydict = {
         "items": Items.objects.order_by('-id')
     }
-    return render(request, 'app1/index.html', context=mydict)
+    return render(request, 'app1/list.html', context=mydict)
 
 ''' 
 def updateItem(request, pk):
