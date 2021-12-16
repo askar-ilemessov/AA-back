@@ -27,12 +27,35 @@
                 <li class="nav-item">
                     <a class="nav-link" href=" {% url 'addItem'  %} ">Добавить товар<span class="sr-only"> </span></a>
                 </li>
-                <li class="nav-item">
-                </li>
+            </ul>
+            <form class="d-flex" method="POST" action="{% url 'search'  %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" name="searched" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit"> Search </button>
+            </form>
         </div>
     </nav>
 
-    {% block content %} {% endblock %}
+    <form method="POST" action=" {% url 'sort' %} ">
+        {% csrf_token %}
+        <div class="form-group">
+    
+            <label for="category">Сортировка</label>
+                <select class="" id="category" name="selected_category">
+                    <option value="name" > По имени по возрастанию </option>
+                    <option value="nameDescending" > По имени по убыванию </option>
+                    <option value="price" > По цене по возрастанию </option>
+                    <option value="priceDescending"> По цене по убыванию </option>
+                    <option value="quantity" > По количеству по возрастанию </option>
+                    <option value="quantityDescending" > По количеству по убыванию </option>
+                </select>
+            <button name="submit" type="submit" name="submit"> Submit </button>
+        </div>
+    </form>
+
+    {% block content %} 
+    
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -2,21 +2,95 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from .models import*
 # Create your views here.
+
+
 def index(request):
-   
-    items=Items.objects.all()
+    items=Items.objects.all().order_by('')
     context={
         "items" : items,
     }
     return render(request,'app1/list.html', context=context,)
 
 
+
 def showAllProducts(request):
-    items=Items.objects.order_by('price')
+    items=Items.objects.all()
     context={
         "items" : items,
     }
     return render(request,'app1/list.html', context=context)
+
+
+
+def sort(request):
+    selected_category = request.POST.get("selected_category")
+    if request.method == "POST":
+        if selected_category == "name":
+            items=Items.objects.all().order_by('name')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+        elif selected_category == "nameDescending":
+            items=Items.objects.all().order_by('-name')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+        elif selected_category == "price":
+            items=Items.objects.all().order_by('price')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+        elif selected_category == "priceDescending":
+            items=Items.objects.all().order_by('-price')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+        elif selected_category == "quantity":
+            items=Items.objects.all().order_by('quantity')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+        elif selected_category == "quantityDescending":
+            items=Items.objects.all().order_by('-quantity')
+            mydict={
+                "selected_category" : selected_category,
+                "items" : items,
+            }
+            return render(request,'app1/sortedList.html', context=mydict)
+
+    else:
+        return render(request,'app1/sortedList.html')
+
+
+    
+
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST.get('searched')
+        items = Items.objects.filter(name__contains = searched)
+        mydict = {
+        "searched": searched,
+        "items" : items
+        }
+        return render(request,'app1/search.html', context=mydict)
+    else:
+        return render(request,'app1/search.html', {})
 
 
 
